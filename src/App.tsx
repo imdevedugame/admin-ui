@@ -1,67 +1,90 @@
 import "./App.css";
+import type { ReactNode } from "react";
+
+function Section({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="space-y-4">
+      <h2 className="text-xs font-semibold tracking-wider text-gray-500">{title}</h2>
+      <div className="rounded-md border border-gray-200 bg-white p-4">{children}</div>
+    </section>
+  );
+}
 
 function App() {
-  const courses = [
-    { title: "System Administration and IT Infrastructure Services" },
-    { title: "Operating Systems Becoming a Power User" },
-    { title: "The Bits and Bytes of Computer Networking" },
-    { title: "Technical Support Fundamentals" },
-    { title: "How to Succeed at: Writing Applications" },
-    { title: "Medicine Administration for Carers" },
-  ];
-
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {courses.map((course, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-shadow"
-          >
-            {/* Image placeholder 300x200 */}
-            <div className="bg-gray-200 h-52 flex items-center justify-center text-gray-500 text-3xl font-medium select-none">
-              300 × 200
-            </div>
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6">
+      <div className="mx-auto max-w-6xl space-y-8">
+        {/* LATIHAN 1 — Navbar dengan Flexbox */}
+        <Section title="LATIHAN 1">
+          <nav className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div className="font-bold">MyLogo</div>
+            <ul className="flex flex-col gap-2 md:flex-row md:gap-6 text-sm">
+              <li>
+                <a className="text-gray-700 hover:text-blue-600 active:text-blue-800" href="#">Home</a>
+              </li>
+              <li>
+                <a className="text-gray-700 hover:text-blue-600 active:text-blue-800" href="#">About</a>
+              </li>
+              <li>
+                <a className="text-gray-700 hover:text-blue-600 active:text-blue-800" href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </Section>
 
-            {/* Content */}
-            <div className="bg-rose-50 p-4 flex-1 flex flex-col">
-              <h3 className="text-base sm:text-lg font-semibold leading-snug">
-                {course.title}
-              </h3>
-
-              {/* Info card */}
-              <div className="mt-4 rounded-lg p-3 bg-white/70 ring-1 ring-rose-100">
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <span className="flex items-center gap-2">👥 123 users</span>
-                  <span className="flex items-center gap-2">⏱ 60 min</span>
-                </div>
-
-                {/* Author */}
-                <div className="mt-3 flex items-center gap-3">
-                  <img
-                    src="https://www.placehold.co/50x50"
-                    alt="Author avatar"
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="text-sm font-medium">Author's Name</p>
-                    <p className="text-xs text-gray-500">Designer</p>
-                  </div>
-                </div>
+        {/* LATIHAN 2 — Grid Galeri Gambar */}
+        <Section title="LATIHAN 2">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="aspect-square rounded-md bg-gray-200 grid place-items-center text-gray-500">
+                200 × 200
               </div>
+            ))}
+          </div>
+        </Section>
 
-              {/* Footer */}
-              <div className="mt-4 flex items-center justify-between">
-                <div className="bg-white py-2 px-3 rounded shadow-sm font-medium">
-                  $123
-                </div>
-                <button className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-4 py-2 rounded text-sm">
-                  Get Started
-                </button>
+        {/* LATIHAN 3 — Pricing Table */}
+        <Section title="LATIHAN 3">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.25fr_1fr] gap-4">
+            <div className="rounded-md border p-4 text-center">
+              <div className="text-sm">Basic</div>
+              <div className="text-xs text-gray-500">Rp 50.000</div>
+            </div>
+            <div className="rounded-md border p-4 text-center bg-blue-100 border-blue-300 md:scale-[1.04]">
+              <div className="text-sm font-medium">Pro</div>
+              <div className="text-xs text-gray-700">Rp 100.000</div>
+            </div>
+            <div className="rounded-md border p-4 text-center">
+              <div className="text-sm">Premium</div>
+              <div className="text-xs text-gray-500">Rp 200.000</div>
+            </div>
+          </div>
+        </Section>
+
+        {/* LATIHAN 4 — Layout Dashboard Sederhana */}
+        <Section title="LATIHAN 4">
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-12 rounded-md bg-gray-300 p-4">Header</div>
+            <div className="col-span-12 md:col-span-3 rounded-md bg-gray-300 p-4 min-h-40">Sidebar</div>
+            <div className="col-span-12 md:col-span-9 rounded-md bg-gray-300 p-4 min-h-40">Content</div>
+            <div className="col-span-12 rounded-md bg-gray-300 p-4">Footer</div>
+          </div>
+        </Section>
+
+        {/* LATIHAN 5 — Card Product dengan Flexbox */}
+        <Section title="LATIHAN 5">
+          <div className="rounded-md border p-4">
+            <div className="flex flex-col md:flex-row items-start gap-4">
+              <div className="w-20 h-20 shrink-0 rounded-md bg-gray-200 grid place-items-center text-[10px] text-gray-500">
+                80 × 80
+              </div>
+              <div>
+                <div className="font-medium">Nama Produk</div>
+                <p className="text-xs text-gray-600">Deskripsi produk singkat…</p>
               </div>
             </div>
           </div>
-        ))}
+        </Section>
       </div>
     </div>
   );
