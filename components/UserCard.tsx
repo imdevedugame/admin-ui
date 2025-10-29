@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function UserCard(props) {
+interface UserCardProps {
+  name: string;
+  email: string;
+  street: string;
+  city: string;
+}
+
+function UserCard(props: UserCardProps) {
   const { name, email, street, city } = props;
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState<boolean>(false);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-shadow">

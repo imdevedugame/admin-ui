@@ -1,6 +1,10 @@
-import React from 'react';
+type PricingCardProps = {
+  plan: string;
+  price: string;
+  isFeatured?: boolean;
+};
 
-export default function PricingCard({ plan, price, isFeatured = false }) {
+export default function PricingCard({ plan, price, isFeatured = false }: PricingCardProps) {
   const base = 'p-6 rounded-lg text-center w-full md:w-1/3 transform';
   const style = isFeatured
     ? `${base} bg-blue-500 text-white shadow-xl scale-105`
