@@ -1,8 +1,8 @@
 
 
 import React, { useEffect, useState } from "react"; 
-import UserCard from "./UserCard.tsx";
-import { getUsers } from "./Services.tsx"; 
+import UserCard from "./UserCard";
+import { getUsers } from "./Services"; 
 
 function Exercise() {
 
