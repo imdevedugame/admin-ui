@@ -16,7 +16,7 @@ export default function PostCard({ id, title, body }: PostCardProps) {
         ${
           clicked
             ? "bg-pink-50 border-black  hover:bg-red-100"
-            : "border-black/10 hover:border-black hover:shadow-md hover:-translate-y-1" 
+            : "border-black/10 hover:border-black hover:shadow-md hover:-translate-y-1 hover:bg-pink-50" 
         }`}
       aria-labelledby={`post-title-${id}`}
     >
@@ -40,7 +40,7 @@ export default function PostCard({ id, title, body }: PostCardProps) {
             ${
               clicked
                 ? "bg-[#b83016] hover:bg-[#9b2a13]"
-                : "bg-gray-700 hover:bg-gray-800"
+                : "bg-gray-800 hover:bg-gray-500"
             }`}
           aria-pressed={clicked}
           type="button"
