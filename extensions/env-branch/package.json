@@ -1,0 +1,30 @@
+{
+  "name": "env-branch",
+  "displayName": "Env Branch (Zero-Knowledge)",
+  "publisher": "your-publisher-name",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:env.branch.register",
+    "onCommand:env.branch.login",
+    "onCommand:env.branch.saveEnv",
+    "onCommand:env.branch.sync"
+  ],
+  "main": "./dist/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.70.0",
+    "vscode": "^1.1.37"
+  }
+}
