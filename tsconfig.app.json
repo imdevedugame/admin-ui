@@ -24,5 +24,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "components/Exercise.tsx", "components/PostCard.tsx", "components/Services.tsx", "components/UserCard.tsx"]
 }
