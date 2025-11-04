@@ -7,7 +7,7 @@ type PostCardProps = {
   body: string;
 };
 
-export default function PostCard({ id, userId, title, body }: PostCardProps) {
+export default function PostCard({ id, title, body }: PostCardProps) {
   const [clicked, setClicked] = useState(false);
 
   return (
