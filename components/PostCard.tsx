@@ -39,7 +39,7 @@ export default function PostCard({ id, title, body }: PostCardProps) {
           className={`w-full px-3 py-2 rounded text-sm font-medium text-white transition-colors duration-200 
             ${
               clicked
-                ? "bg-[#b83016] hover:bg-[#9b2a13]"
+                ? "bg-[#b83016] hover:bg-[#e03816]"
                 : "bg-gray-800 hover:bg-gray-500"
             }`}
           aria-pressed={clicked}
