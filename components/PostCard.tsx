@@ -12,11 +12,11 @@ export default function PostCard({ id, userId, title, body }: PostCardProps) {
 
   return (
     <article
-      className={`post-card border text-center rounded-lg p-2 bg-white flex flex-col justify-between shadow-sm transition-all duration-200 
+      className={`post-card border rounded-lg text-center p-2 bg-white flex flex-col justify-between shadow-sm transition-all duration-200 
         ${
           clicked
-            ? "bg-amber-50 border-black-60"
-            : "border-black/10 hover:border-black hover:shadow-md hover:-translate-y-1 hover:bg-pink-50" 
+            ? "bg-pink-50 border-black  hover:bg-red-100"
+            : "border-black/10 hover:border-black hover:shadow-md hover:-translate-y-1" 
         }`}
       aria-labelledby={`post-title-${id}`}
     >
@@ -39,7 +39,7 @@ export default function PostCard({ id, userId, title, body }: PostCardProps) {
           className={`w-full px-3 py-2 rounded text-sm font-medium text-white transition-colors duration-200 
             ${
               clicked
-                ? "bg-[#b83016] hover:bg-[#fa411c]"
+                ? "bg-[#b83016] hover:bg-[#9b2a13]"
                 : "bg-gray-700 hover:bg-gray-800"
             }`}
           aria-pressed={clicked}
