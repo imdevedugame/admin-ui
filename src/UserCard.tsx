@@ -1,11 +1,17 @@
 
 
-import React, { useState } from "react";
+import { useState } from "react";
 
-function UserCard(props) {
+interface UserCardProps {
+  name?: string;
+  email?: string;
+  street?: string;
+  city?: string;
+  [key: string]: any;
+}
 
+function UserCard(props: UserCardProps) {
   const { name, email, street, city, ...rest } = props;
-  
 
   const [clicked, setClicked] = useState(false);
 
