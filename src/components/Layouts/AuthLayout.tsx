@@ -1,5 +1,5 @@
 import Logo from "../Elements/Logo";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
 
 type AuthLayoutProps = PropsWithChildren<{}>;
 
