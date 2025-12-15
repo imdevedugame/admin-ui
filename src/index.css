@@ -1,3 +1,10 @@
 :root {
+	/* Tailwind v4 color tokens */
+	--color-primary: #2abbaa; /* teal brand */
+	--color-gray-02: #667085; /* dark gray text */
+	--color-gray-05: #eef2f6; /* light gray surfaces */
+	--color-special-mainBg: #f9fafb; /* app background */
+
+	/* Legacy variable kept for latihan demos */
 	--special-red-2: #b83016;
 }
