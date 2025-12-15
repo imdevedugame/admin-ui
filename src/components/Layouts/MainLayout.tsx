@@ -1,10 +1,22 @@
 import { PropsWithChildren } from "react";
 import Logo from "../Elements/Logo";
 import Input from "../Elements/Input";
+import Icon from "../Elements/Icon";
+import { NavLink } from "react-router-dom";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 type MainLayoutProps = PropsWithChildren<{}>;
 
 export default function MainLayout({ children }: MainLayoutProps) {
+  const menu = [
+    { id: 1, name: "Overview", icon: <Icon.Overview />, link: "/" },
+    { id: 2, name: "Balances", icon: <Icon.Balance />, link: "/balance" },
+    { id: 3, name: "Transaction", icon: <Icon.Transaction />, link: "/transaction" },
+    { id: 4, name: "Bills", icon: <Icon.Bill />, link: "/bill" },
+    { id: 5, name: "Expenses", icon: <Icon.Expense />, link: "/expense" },
+    { id: 6, name: "Goals", icon: <Icon.Goal />, link: "/goal" },
+    { id: 7, name: "Settings", icon: <Icon.Setting />, link: "/setting" },
+  ];
   return (
     <div className="min-h-screen flex bg-[#f5f7fa]">
       {/* Sidebar */}
@@ -16,21 +28,20 @@ export default function MainLayout({ children }: MainLayoutProps) {
           </div>
 
           <nav className="space-y-2">
-            {/* Overview */}
-            <div className="flex items-center hover:bg-[#2abbaa] hover:text-white px-4 py-3 rounded-md cursor-pointer">
-              <div className="mx-auto sm:mx-0">O</div>
-              <div className="ms-3 hidden sm:block">Overview</div>
-            </div>
-            {/* Balances */}
-            <div className="flex items-center hover:bg-[#2abbaa] hover:text-white px-4 py-3 rounded-md cursor-pointer">
-              <div className="mx-auto sm:mx-0">B</div>
-              <div className="ms-3 hidden sm:block">Balances</div>
-            </div>
-            {/* Transactions */}
-            <div className="flex items-center hover:bg-[#2abbaa] hover:text-white px-4 py-3 rounded-md cursor-pointer">
-              <div className="mx-auto sm:mx-0">T</div>
-              <div className="ms-3 hidden sm:block">Transactions</div>
-            </div>
+            {menu.map((item) => (
+              <NavLink
+                key={item.id}
+                to={item.link}
+                className={({ isActive }) =>
+                  `flex items-center px-4 py-3 rounded-md hover:text-white hover:font-bold hover:scale-105 ${
+                    isActive ? "bg-[#2abbaa] text-white font-bold" : "hover:bg-[#1e293b]"
+                  }`
+                }
+              >
+                <div className="mx-auto sm:mx-0">{item.icon}</div>
+                <div className="ms-3 hidden sm:block">{item.name}</div>
+              </NavLink>
+            ))}
           </nav>
         </div>
 
@@ -39,7 +50,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
           <div className="border-b border-white/10 my-10" />
           {/* Logout */}
           <div className="flex items-center bg-[#2abbaa] text-white px-4 py-3 rounded-md">
-            <div className="mx-auto sm:mx-0">L</div>
+            <div className="mx-auto sm:mx-0"><Icon.Logout color="currentColor" /></div>
             <div className="ms-3 hidden sm:block">Logout</div>
           </div>
 
@@ -66,7 +77,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
               <div className="text-sm text-gray-500">May 19, 2023</div>
             </div>
             <div className="flex items-center gap-3 w-56 sm:w-72">
-              <div className="text-gray-500">🔔</div>
+              <NotificationsIcon style={{ color: "#667085", fontSize: 24 }} />
               <div className="flex-1">
                 <Input id="search" placeholder="Search" backgroundColor="bg-white" border="border-white" />
               </div>
