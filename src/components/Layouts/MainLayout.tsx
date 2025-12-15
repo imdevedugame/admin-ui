@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
 import Logo from "../Elements/Logo";
 import Input from "../Elements/Input";
 import Icon from "../Elements/Icon";
