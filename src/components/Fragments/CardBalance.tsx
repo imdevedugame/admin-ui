@@ -36,8 +36,8 @@ function CardBalance({ data }: Props) {
             </div>
             <div className="border-b border-gray-300 my-4"></div>
            <div 
-             className="rounded-2xl p-6 flex flex-col justify-between text-white min-h-[160px] relative overflow-hidden"
-             style={{ backgroundColor: theme.color }}
+             className="rounded-xl p-4 sm:p-6 flex flex-col justify-between text-white min-h-[100px] sm:min-h-[120px] relative overflow-hidden w-full"
+             style={{ backgroundColor: theme.color, borderRadius: 24, minHeight: 100, padding: 16 }}
            >
             {/* Baris Atas: Account Type & Logo */}
             <div className="flex justify-between items-start">
