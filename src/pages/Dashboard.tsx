@@ -70,11 +70,11 @@ return (
         <div className="sm:col-span-4">
           <CardBalance data={balances} />
         </div>
-        <div className="sm:col-span-3">
+        <div className="sm:col-span-4">
           <CardGoal data={goals} />
         </div>
         {/* Berikan span lebih besar (5) agar Upcoming Bill tidak terhimpit */}
-        <div className="sm:col-span-5">
+        <div className="sm:col-span-4">
           <CardUpcomingBill data={bills} />
         </div>
 
