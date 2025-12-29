@@ -1,49 +1,92 @@
 import MainLayout from "../components/Layouts/MainLayout";
-import Card from "../components/Elements/Card";
+import CardExpenseBreakdown from "../components/Fragments/CardExpenseBreakdown";
+import RecentTransaction from "../components/Fragments/RecentTransaction";
+import CardBalance from "../components/Fragments/CardBalance";
+import CardGoal from "../components/Fragments/CardGoal";
+import CardStatistic from "../components/Fragments/CardStatistic";
+import CardUpcomingBill from "../components/Fragments/CardUpcomingBill";
+import Icon from "../components/Elements/Icon";
+import { balances, goals, expensesStatistics, transactions, bills } from "../data";
+
 
 export default function Dashboard() {
-  return (
+  // Data dummy untuk Expenses Breakdown
+  const expenseData = [
+    {
+      id: 1,
+      category: "Housing",
+      amount: 250,
+      percentage: 15,
+      icon: <Icon.Balance />,
+      arrow: <Icon.ArrowUp />,
+    },
+    {
+      id: 2,
+      category: "Food",
+      amount: 350,
+      percentage: 8,
+      icon: <Icon.Expense />,
+      arrow: <Icon.ArrowDown />,
+    },
+    {
+      id: 3,
+      category: "Transportation",
+      amount: 50,
+      percentage: 12,
+      icon: <Icon.Bill />,
+      arrow: <Icon.ArrowDown />,
+    },
+    {
+      id: 4,
+      category: "Entertainment",
+      amount: 80,
+      percentage: 15,
+      icon: <Icon.Goal />,
+      arrow: <Icon.ArrowUp />,
+    },
+    {
+      id: 5,
+      category: "Shopping",
+      amount: 420,
+      percentage: 25,
+      icon: <Icon.Transaction />,
+      arrow: <Icon.ArrowUp />,
+    },
+    {
+      id: 6,
+      category: "Others",
+      amount: 650,
+      percentage: 23,
+      icon: <Icon.Setting />,
+      arrow: <Icon.ArrowUp />,
+    },
+  ];
+return (
     <MainLayout>
-      <div className="grid sm:grid-cols-12 gap-6 min-h-[720px]">
+      {/* Gunakan gap yang konsisten dan pastikan span kolom cukup untuk konten */}
+      <div className="grid sm:grid-cols-12 gap-6">
+        
+        {/* Baris Pertama */}
         <div className="sm:col-span-4">
-          <Card
-            title="Total Balance"
-            desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, autem porro asperiores numquam sed veritatis debitis beatae amet laboriosam fuga pariatur sapiente suscipit culpa facere voluptatem. Repellat asperiores doloribus earum!"
-          />
+          <CardBalance data={balances} />
         </div>
-        <div className="sm:col-span-4">
-          <Card
-            title="Goals"
-            desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, autem porro asperiores numquam sed veritatis debitis beatae amet laboriosam fuga pariatur sapiente suscipit culpa facere voluptatem. Repellat asperiores doloribus earum!"
-          />
+        <div className="sm:col-span-3">
+          <CardGoal data={goals} />
         </div>
-        <div className="sm:col-span-4">
-          <Card
-            title="Upcoming Bill"
-            link="/bill"
-            desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, autem porro asperiores numquam sed veritatis debitis beatae amet laboriosam fuga pariatur sapiente suscipit culpa facere voluptatem. Repellat asperiores doloribus earum!"
-          />
+        {/* Berikan span lebih besar (5) agar Upcoming Bill tidak terhimpit */}
+        <div className="sm:col-span-5">
+          <CardUpcomingBill data={bills} />
         </div>
 
-        <div className="sm:col-span-4 sm:row-span-2">
-          <Card
-            title="Recent Transactions"
-            link="/transactions"
-            desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, autem porro asperiores numquam sed veritatis debitis beatae amet laboriosam fuga pariatur sapiente suscipit culpa facere voluptatem. Repellat asperiores doloribus earum!"
-          />
+        {/* Baris Kedua dan seterusnya */}
+        <div className="sm:col-span-4">
+          <RecentTransaction data={[...transactions]} />
         </div>
-        <div className="sm:col-span-8">
-          <Card
-            title="Statistics"
-            desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, autem porro asperiores numquam sed veritatis debitis beatae amet laboriosam fuga pariatur sapiente suscipit culpa facere voluptatem. Repellat asperiores doloribus earum!"
-          />
+        <div className="sm:col-span-8 flex flex-col gap-6">
+          <CardStatistic data={expensesStatistics} />
+          <CardExpenseBreakdown data={expenseData} />
         </div>
-        <div className="sm:col-span-8">
-          <Card
-            title="Expenses Breakdown"
-            desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, autem porro asperiores numquam sed veritatis debitis beatae amet laboriosam fuga pariatur sapiente suscipit culpa facere voluptatem. Repellat asperiores doloribus earum!"
-          />
-        </div>
+        
       </div>
     </MainLayout>
   );

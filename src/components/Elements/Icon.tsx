@@ -8,14 +8,34 @@ import SettingSVG from "../../assets/icons/Settings.svg?react";
 import DetailSVG from "../../assets/icons/Icon.svg?react";
 import ChevronRightSVG from "../../assets/icons/chevrons-right.svg?react";
 import LogoutSVG from "../../assets/icons/Icon2.svg?react";
+import AdobeSVG from "../../assets/icons/Adobe.svg?react";
+import FigmaSVG from "../../assets/icons/Figma.svg?react";
+import FoodSVG from "../../assets/icons/Food.svg?react";
+import GamepadSVG from "../../assets/icons/gamepad-2.svg?react";
+import HouseSVG from "../../assets/icons/Housing.svg?react";
+import MovieSVG from "../../assets/icons/Movie.svg?react";
+import OtherSVG from "../../assets/icons/Others.svg?react";
+import ShoppingSVG from "../../assets/icons/Shopping.svg?react";
+import TransportSVG from "../../assets/icons/Trasnport.svg?react";
+import ArrowRightSVG from "../../assets/icons/arrow-right.svg?react";
+import ArrowDownSVG from "../../assets/icons/Downarrow.svg?react";
+import ArrowUpSVG from "../../assets/icons/Uparrow.svg?react";
+import ArrowUpRightSVG from "../../assets/icons/arrow-up-right.svg?react";
+import EditSVG from "../../assets/icons/edit.svg?react";
+import MastercardSVG from "../../assets/icons/Mastercard-Logo.svg?react";
+import VisaSVG from "../../assets/icons/Visa_Logo.svg?react";
+import TargetSVG from "../../assets/icons/target.svg?react";
+import AwardSVG from "../../assets/icons/Award.svg?react";
+import React from "react";
 
-type IconProps = { size?: number; color?: string } & React.SVGProps<SVGSVGElement>;
-
-
-const createIcon = (SVG: React.FC<any>) => ({ size = 24, color = "currentColor", ...props }) => (
-  <SVG width={size} height={size} stroke={color} {...props} />
-);
-
+const createIcon =
+  (SVG: React.FC<any>) =>
+  ({ size = 24, color = "currentColor", ...props }: { size?: number; color?: string;[key: string]: any; }) =>
+    <SVG width={size} height={size} stroke={color} {...props} />;
+const createLogo =
+  (SVG: React.FC<any>) =>
+  ({ size = 40, ...props }: { size?: number; [key: string]: any; }) =>
+    <SVG width={size} height={size} {...props} />; // Menghapus stroke={color}
 const Icon = {
   Overview: createIcon(OverviewSVG),
   Transaction: createIcon(TransactionSVG),
@@ -27,12 +47,24 @@ const Icon = {
   Detail: createIcon(DetailSVG),
   ChevronRight: createIcon(ChevronRightSVG),
   Logout: createIcon(LogoutSVG),
-  ArrowUp: ({ size = 16, color = "#FF5F5F", ...props }) => (
-    <span style={{ color, fontSize: size, display: 'inline-flex', alignItems: 'center' }} {...props}>↑</span>
-  ),
-  ArrowDown: ({ size = 16, color = "#22C55E", ...props }) => (
-    <span style={{ color, fontSize: size, display: 'inline-flex', alignItems: 'center' }} {...props}>↓</span>
-  ),
+  Adobe: createIcon(AdobeSVG),
+  Figma: createIcon(FigmaSVG),
+  Food: createIcon(FoodSVG),
+  Gamepad: createIcon(GamepadSVG),
+  House: createIcon(HouseSVG),
+  Movie: createIcon(MovieSVG),
+  Other: createIcon(OtherSVG),
+  Shopping: createIcon(ShoppingSVG),
+  Transport: createIcon(TransportSVG),
+  ArrowRight: createIcon(ArrowRightSVG),
+  ArrowDown: (props: { size?: number; color?: string;[key: string]: any; }) => createIcon(ArrowDownSVG)({...props, color: "#FF5F5F"}),
+  ArrowUp: (props: { size?: number; color?: string;[key: string]: any; }) => createIcon(ArrowUpSVG)({...props, color: "#22C55E"}),
+  Edit: createIcon(EditSVG),
+  Mastercard: createLogo(MastercardSVG),
+  Visa: createLogo(VisaSVG),
+  Target: createIcon(TargetSVG),
+  Award: createIcon(AwardSVG),
+  ArrowUpRight: createIcon(ArrowUpRightSVG),
 };
 
 export default Icon;

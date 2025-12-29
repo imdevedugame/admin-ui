@@ -1,9 +1,11 @@
 import type { PropsWithChildren } from 'react';
 
+
 type ButtonProps = PropsWithChildren<{
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary";
   className?: string;
+  style?: React.CSSProperties;
 }>;
 
 export default function Button({
@@ -11,6 +13,7 @@ export default function Button({
   type = "submit",
   variant = "primary",
   className = "",
+  style,
 }: ButtonProps) {
   const baseClasses = "h-12 rounded-md text-sm w-full";
   const variantClasses: Record<string, string> = {
@@ -20,7 +23,7 @@ export default function Button({
   const finalClasses = `${baseClasses} ${variantClasses[variant] || variantClasses.primary} ${className}`.trim();
 
   return (
-    <button className={finalClasses} type={type}>
+    <button className={finalClasses} type={type} style={style}>
       {children}
     </button>
   );

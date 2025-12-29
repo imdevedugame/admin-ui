@@ -1,8 +1,13 @@
+
+import { useContext } from "react";
+import { ThemeContext } from "../../context/themeContext";
 import LabeledInput from "../Elements/LabeledInput";
 import CheckBox from "../Elements/CheckBox";
 import Button from "../Elements/Button";
 
+
 export default function FormSignIn() {
+  const { theme } = useContext(ThemeContext);
   return (
     <>
       <form action="">
@@ -27,7 +32,7 @@ export default function FormSignIn() {
         <CheckBox id="status" name="status" label="Keep me signed in" />
 
         {/* button login */}
-        <Button>Login</Button>
+        <Button style={{ backgroundColor: theme.color }}>Login</Button>
       </form>
 
       {/* divider */}
@@ -70,7 +75,7 @@ export default function FormSignIn() {
 
       {/* link */}
       <div className="mt-8 flex justify-center">
-        <a href="#" className="text-primary text-sm font-bold">
+        <a href="#" className="text-sm font-bold" style={{ color: theme.color }}>
           Create an account
         </a>
       </div>

@@ -1,19 +1,23 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 type CardProps = {
   title: string;
-  desc: string;
-  link?: string | boolean;
+  children?: React.ReactNode;
+  desc?: React.ReactNode;
+  link?: string;
 };
 
-export default function Card({ title, desc, link = false }: CardProps) {
+export default function Card({ title, children, desc, link }: CardProps) {
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex justify-between items-center text-[#667085] mb-2">
-        <div className="text-2xl">{title}</div>
-        {link ? <div className="text-xs">View All</div> : null}
+    <div className="bg-white rounded-xl shadow-md p-0 flex flex-col h-full">
+      <div className="px-6 pt-5 pb-2 flex items-center justify-between text-[#667085]">
+        <div className="text-base font-semibold">{title}</div>
+        {link && (
+            <Link to={link} className="text-xs cursor-pointer">View All &gt;</Link>
+        )}
       </div>
-      <div className="bg-white rounded-lg px-6 py-5 shadow-xl flex-1">
-        {desc}
-      </div>
+      <div className="px-6 pb-5 pt-1 flex-1">{children || desc}</div>
     </div>
   );
 }
