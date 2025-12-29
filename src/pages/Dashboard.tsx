@@ -4,7 +4,7 @@ import Card from "../components/Elements/Card";
 export default function Dashboard() {
   return (
     <MainLayout>
-      <div className="grid sm:grid-cols-12 sm:grid-rows-3 gap-6 min-h-[720px]">
+      <div className="grid sm:grid-cols-12 gap-6 min-h-[720px]">
         <div className="sm:col-span-4">
           <Card
             title="Total Balance"

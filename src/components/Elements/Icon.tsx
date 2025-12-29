@@ -11,36 +11,27 @@ import LogoutSVG from "../../assets/icons/Icon2.svg?react";
 
 type IconProps = { size?: number; color?: string } & React.SVGProps<SVGSVGElement>;
 
+
+const createIcon = (SVG: React.FC<any>) => ({ size = 24, color = "currentColor", ...props }) => (
+  <SVG width={size} height={size} stroke={color} {...props} />
+);
+
 const Icon = {
-  Overview: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <OverviewSVG width={size} height={size} stroke={color} {...props} />
+  Overview: createIcon(OverviewSVG),
+  Transaction: createIcon(TransactionSVG),
+  Balance: createIcon(BalanceSVG),
+  Bill: createIcon(BillSVG),
+  Expense: createIcon(ExpenseSVG),
+  Goal: createIcon(GoalSVG),
+  Setting: createIcon(SettingSVG),
+  Detail: createIcon(DetailSVG),
+  ChevronRight: createIcon(ChevronRightSVG),
+  Logout: createIcon(LogoutSVG),
+  ArrowUp: ({ size = 16, color = "#FF5F5F", ...props }) => (
+    <span style={{ color, fontSize: size, display: 'inline-flex', alignItems: 'center' }} {...props}>↑</span>
   ),
-  Transaction: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <TransactionSVG width={size} height={size} stroke={color} {...props} />
-  ),
-  Balance: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <BalanceSVG width={size} height={size} stroke={color} {...props} />
-  ),
-  Bill: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <BillSVG width={size} height={size} stroke={color} {...props} />
-  ),
-  Expense: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <ExpenseSVG width={size} height={size} stroke={color} {...props} />
-  ),
-  Goal: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <GoalSVG width={size} height={size} stroke={color} {...props} />
-  ),
-  Setting: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <SettingSVG width={size} height={size} stroke={color} {...props} />
-  ),
-  Detail: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <DetailSVG width={size} height={size} stroke={color} {...props} />
-  ),
-  ChevronRight: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <ChevronRightSVG width={size} height={size} stroke={color} {...props} />
-  ),
-  Logout: ({ size = 24, color = "currentColor", ...props }: IconProps) => (
-    <LogoutSVG width={size} height={size} stroke={color} {...props} />
+  ArrowDown: ({ size = 16, color = "#22C55E", ...props }) => (
+    <span style={{ color, fontSize: size, display: 'inline-flex', alignItems: 'center' }} {...props}>↓</span>
   ),
 };
 
