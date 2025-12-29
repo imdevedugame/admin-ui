@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../../context/themeContext";
 import Card from "../Elements/Card";
 
 
@@ -20,6 +21,7 @@ const tabs = ["All", "Revenue", "Expense"];
 
 export default function CardRecentTransaction({ data }: Props) {
   const [active, setActive] = useState("All");
+  const { theme } = useContext(ThemeContext);
 
   const filteredData =
     active === "All" ? data : data.filter((item) => item.type === active);
@@ -32,8 +34,13 @@ export default function CardRecentTransaction({ data }: Props) {
             key={tab}
             className={
               active === tab
-                ? "px-4 font-bold text-[#22B286] border-b-4 border-[#22B286]"
+                ? "px-4 font-bold border-b-4"
                 : "px-4 font-bold text-gray-400"
+            }
+            style={
+              active === tab
+                ? { color: theme.color, borderBottomColor: theme.color }
+                : undefined
             }
             onClick={() => setActive(tab)}
           >
