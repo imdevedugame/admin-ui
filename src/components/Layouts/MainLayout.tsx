@@ -5,6 +5,8 @@ import Icon from "../Elements/Icon";
 import { NavLink } from "react-router-dom";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { ThemeContext } from '../../context/themeContext';
+import { AuthContext } from '../../context/authContext';
+import { logoutService } from '../../services/authService';
 
 type MainLayoutProps = PropsWithChildren<{}>;
 
@@ -32,6 +34,19 @@ export default function MainLayout({ children }: MainLayoutProps) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
   const { theme, setTheme } = context;
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    try {
+      await logoutService();
+      logout(); 
+    } catch (err: any) {
+      console.error(err);
+      if (err.status === 401) {
+        logout();
+      }
+    }
+  };
 
   return (
     <div className={`min-h-screen flex bg-[#f5f7fa] font-sans ${theme.name}`}>
@@ -75,10 +90,10 @@ export default function MainLayout({ children }: MainLayoutProps) {
             </div>
           </div>
           
-          <NavLink to="/signin" className="w-full flex items-center text-gray-400 px-4 py-3 rounded-lg hover:bg-white/5 transition-all">
+          <button onClick={handleLogout} className="w-full flex items-center text-gray-400 px-4 py-3 rounded-lg hover:bg-white/5 transition-all">
             <Icon.Logout />
             <span className="ms-3 hidden sm:block text-sm">Logout</span>
-          </NavLink>
+          </button>
 
           <div className="border-t border-white/10 my-4" />
 
@@ -87,7 +102,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
               <img src="https://i.pravatar.cc/150?u=user" alt="p" className="w-full h-full object-cover" />
             </div>
             <div className="hidden sm:block flex-1 min-w-0">
-              <p className="text-sm font-bold text-white truncate leading-tight">Username</p>
+              <p className="text-sm font-bold text-white truncate leading-tight">{user?.name || 'Username'}</p>
               <p className="text-[11px] text-gray-500 truncate">View Profile</p>
             </div>
             <button className="hidden sm:block text-gray-500 hover:text-white">⋮</button>
@@ -101,7 +116,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         <header className="bg-white border-b border-gray-100 px-10 py-5 z-10 shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <h2 className="text-xl font-bold text-gray-900">Username</h2>
+              <h2 className="text-xl font-bold text-gray-900">{user?.name || 'Username'}</h2>
               {/* Tanda >> yang rapat seperti desain asli */}
               <div className="mx-4 flex items-center text-gray-200">
                  <Icon.ChevronRight size={14} strokeWidth={4} />

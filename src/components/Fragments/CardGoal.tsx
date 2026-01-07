@@ -4,8 +4,8 @@ import Icon from "../Elements/Icon";
 import CompositionExample from "../Elements/CompositionExample";
 
 type Goal = {
-  targetAmount: number;
-  presentAmount: number;
+  target_amount: number;
+  present_amount: number;
 };
 
 type Props = {
@@ -13,13 +13,13 @@ type Props = {
 };
 
 function CardGoal({ data }: Props) {
-  const chartValue = (data.presentAmount / data.targetAmount) * 100;
+  const chartValue = (data.present_amount / data.target_amount) * 100;
   return (
     <Card title="Goals">
       <div className="p-4">
         <div className="flex justify-between items-center mb-2">
           <div className="flex items-center">
-            <span className="text-3xl font-bold mr-3">${data.targetAmount.toLocaleString()}</span>
+            <span className="text-3xl font-bold mr-3">${data.target_amount.toLocaleString()}</span>
             <div className="p-2 bg-gray-100 text-gray-400 rounded-md ml-1">
               <Icon.Edit size={18} />
             </div>
@@ -33,14 +33,14 @@ function CardGoal({ data }: Props) {
               <Icon.Award />
               <div className="ml-2">
                 <div className="text-sm">Target Achieved</div>
-                <div className="font-bold text-2xl text-black">${data.presentAmount.toLocaleString()}</div>
+                <div className="font-bold text-2xl text-black">${data.present_amount.toLocaleString()}</div>
               </div>
             </div>
             <div className="flex items-center text-gray-400">
               <Icon.Target />
               <div className="ml-2">
                 <div className="text-sm">This month Target</div>
-                <div className="font-bold text-2xl text-black">${data.targetAmount.toLocaleString()}</div>
+                <div className="font-bold text-2xl text-black">${data.target_amount.toLocaleString()}</div>
               </div>
             </div>
           </div>

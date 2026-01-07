@@ -4,6 +4,7 @@ import "./index.css";
 import "./App.css";
 import App from "./App";
 import { ThemeContextProvider } from "./context/themeContext";
+import { AuthContextProvider } from "./context/authContext";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");
@@ -11,7 +12,9 @@ if (!rootElement) throw new Error("Root element not found");
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <ThemeContextProvider>
-      <App />
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
     </ThemeContextProvider>
   </React.StrictMode>
 );

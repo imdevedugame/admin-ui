@@ -1,16 +1,27 @@
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/themeContext";
 import LabeledInput from "../Elements/LabeledInput";
 import CheckBox from "../Elements/CheckBox";
 import Button from "../Elements/Button";
 
+interface FormSignInProps {
+  onSubmit: (email: string, password: string) => void;
+}
 
-export default function FormSignIn() {
+export default function FormSignIn({ onSubmit }: FormSignInProps) {
   const { theme } = useContext(ThemeContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSubmit(email, password);
+  };
+
   return (
     <>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         {/* input */}
         <LabeledInput
           id="email"
@@ -18,6 +29,8 @@ export default function FormSignIn() {
           type="email"
           name="email"
           placeholder="hello@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <LabeledInput
@@ -26,6 +39,8 @@ export default function FormSignIn() {
           type="password"
           name="password"
           placeholder="********"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         {/* check box */}

@@ -6,10 +6,33 @@ import CardGoal from "../components/Fragments/CardGoal";
 import CardStatistic from "../components/Fragments/CardStatistic";
 import CardUpcomingBill from "../components/Fragments/CardUpcomingBill";
 import Icon from "../components/Elements/Icon";
-import { balances, goals, expensesStatistics, transactions, bills } from "../data";
-
+import { balances, expensesStatistics, transactions, bills } from "../data";
+import { useContext, useEffect, useState } from "react";
+import { goalService } from "../services/dataService";
+import { AuthContext } from "../context/authContext";
 
 export default function Dashboard() {
+  const { logout } = useContext(AuthContext);
+  const [goals, setGoals] = useState<any>(null);
+
+  const fetchGoals = async () => {
+    try {
+      console.log("Fetching goals...");
+      const data = await goalService();
+      console.log("Goals data received:", data);
+      setGoals(data);
+    } catch (err: any) {
+      console.error("Gagal mengambil data goals:", err);
+      if (err.status === 401) {
+        console.log("Token tidak valid, logout...");
+        logout();
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchGoals();
+  }, []);
   // Data dummy untuk Expenses Breakdown
   const expenseData = [
     {
@@ -71,7 +94,7 @@ return (
           <CardBalance data={balances} />
         </div>
         <div className="sm:col-span-4">
-          <CardGoal data={goals} />
+          {goals ? <CardGoal data={goals} /> : <div>Loading...</div>}
         </div>
         {/* Berikan span lebih besar (5) agar Upcoming Bill tidak terhimpit */}
         <div className="sm:col-span-4">
