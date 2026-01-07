@@ -15,7 +15,7 @@ export default function Button({
   className = "",
   style,
 }: ButtonProps) {
-  const baseClasses = "h-12 rounded-md text-sm w-full";
+  const baseClasses = "h-12 rounded-md text-sm w-full cursor-pointer hover:scale-105 transition-transform";
   const variantClasses: Record<string, string> = {
     primary: "bg-[#2abbaa] text-white",
     secondary: "bg-[#eef2f6] text-[#667085]",

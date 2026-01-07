@@ -14,7 +14,7 @@ export default function Logo({ variant = "primary" }: LogoProps) {
 
   return (
     <div
-      className={`flex justify-center font-poppins tracking-wide ${variantClasses[variant] || variantClasses.primary}`}
+      className={`flex justify-center font-poppins tracking-wide animate-bounce ${variantClasses[variant] || variantClasses.primary}`}
       style={{ color: theme.color }}
     >
       <span className="font-bold">FINE</span>

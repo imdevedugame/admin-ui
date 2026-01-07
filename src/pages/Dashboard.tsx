@@ -10,10 +10,20 @@ import { balances, expensesStatistics, transactions, bills } from "../data";
 import { useContext, useEffect, useState } from "react";
 import { goalService } from "../services/dataService";
 import { AuthContext } from "../context/authContext";
+import AppSnackbar from "../components/Elements/AppSnackbar";
 
 export default function Dashboard() {
   const { logout } = useContext(AuthContext);
-  const [goals, setGoals] = useState<any>(null);
+  const [goals, setGoals] = useState<any>({});
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success" as "success" | "error" | "warning" | "info",
+  });
+
+  const handleCloseSnackbar = () => {
+    setSnackbar((prev) => ({ ...prev, open: false }));
+  };
 
   const fetchGoals = async () => {
     try {
@@ -23,6 +33,7 @@ export default function Dashboard() {
       setGoals(data);
     } catch (err: any) {
       console.error("Gagal mengambil data goals:", err);
+      setSnackbar({ open: true, message: err.msg || "Gagal mengambil data goals", severity: "error" });
       if (err.status === 401) {
         console.log("Token tidak valid, logout...");
         logout();
@@ -94,7 +105,7 @@ return (
           <CardBalance data={balances} />
         </div>
         <div className="sm:col-span-4">
-          {goals ? <CardGoal data={goals} /> : <div>Loading...</div>}
+          <CardGoal data={goals} />
         </div>
         {/* Berikan span lebih besar (5) agar Upcoming Bill tidak terhimpit */}
         <div className="sm:col-span-4">
@@ -111,6 +122,12 @@ return (
         </div>
         
       </div>
+      <AppSnackbar
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        onClose={handleCloseSnackbar}
+      />
     </MainLayout>
   );
 }

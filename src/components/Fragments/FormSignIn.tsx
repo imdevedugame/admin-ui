@@ -90,7 +90,7 @@ export default function FormSignIn({ onSubmit }: FormSignInProps) {
 
       {/* link */}
       <div className="mt-8 flex justify-center">
-        <a href="#" className="text-sm font-bold" style={{ color: theme.color }}>
+        <a href="#" className="text-sm font-bold animate-bounce" style={{ color: theme.color }}>
           Create an account
         </a>
       </div>
