@@ -6,6 +6,7 @@ type LabeledInputProps = {
   placeholder?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 };
 
 export default function LabeledInput({
@@ -16,6 +17,7 @@ export default function LabeledInput({
   placeholder,
   value,
   onChange,
+  onBlur,
 }: LabeledInputProps) {
   return (
     <div className="mb-6">
@@ -29,6 +31,7 @@ export default function LabeledInput({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
           className="text-sm rounded-md w-full bg-[#f9fafb] border border-gray-200 text-gray-700 py-2 px-3 focus:border-gray-400 focus:outline-none focus:ring-0"
         />
     </div>

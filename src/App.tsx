@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Balance from "./pages/Balance";
+import Expense from "./pages/Expense";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import { useContext } from "react";
@@ -47,6 +48,14 @@ export default function App() {
           element={
             <RequireAuth>
               <Balance />
+            </RequireAuth>
+          } 
+        />
+        <Route 
+          path="/expense" 
+          element={
+            <RequireAuth>
+              <Expense />
             </RequireAuth>
           } 
         />

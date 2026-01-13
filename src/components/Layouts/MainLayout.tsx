@@ -1,9 +1,10 @@
-import { type PropsWithChildren, useContext } from 'react';
+import { type PropsWithChildren, useContext, useState } from 'react';
 import Logo from "../Elements/Logo";
 import Input from "../Elements/Input";
 import Icon from "../Elements/Icon";
 import { NavLink } from "react-router-dom";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import { Backdrop, CircularProgress } from "@mui/material";
 import { ThemeContext } from '../../context/themeContext';
 import { AuthContext } from '../../context/authContext';
 import { logoutService } from '../../services/authService';
@@ -35,8 +36,10 @@ export default function MainLayout({ children }: MainLayoutProps) {
   }
   const { theme, setTheme } = context;
   const { user, logout } = useContext(AuthContext);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleLogout = async () => {
+    setIsLoggingOut(true);
     try {
       await logoutService();
       logout(); 
@@ -45,6 +48,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
       if (err.status === 401) {
         logout();
       }
+    } finally {
+      setIsLoggingOut(false);
     }
   };
 
@@ -147,6 +152,17 @@ export default function MainLayout({ children }: MainLayoutProps) {
   </div>
 </main>
       </div>
+
+      {/* Backdrop untuk loading saat logout */}
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={isLoggingOut}
+      >
+        <div className="flex flex-col items-center gap-4">
+          <CircularProgress color="inherit" size={60} />
+          <div className="text-lg font-medium">Logging Out...</div>
+        </div>
+      </Backdrop>
     </div>
   );
 }

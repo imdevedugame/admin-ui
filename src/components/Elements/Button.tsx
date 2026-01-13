@@ -6,6 +6,7 @@ type ButtonProps = PropsWithChildren<{
   variant?: "primary" | "secondary";
   className?: string;
   style?: React.CSSProperties;
+  disabled?: boolean;
 }>;
 
 export default function Button({
@@ -14,6 +15,7 @@ export default function Button({
   variant = "primary",
   className = "",
   style,
+  disabled = false,
 }: ButtonProps) {
   const baseClasses = "h-12 rounded-md text-sm w-full cursor-pointer hover:scale-105 transition-transform";
   const variantClasses: Record<string, string> = {
@@ -23,7 +25,7 @@ export default function Button({
   const finalClasses = `${baseClasses} ${variantClasses[variant] || variantClasses.primary} ${className}`.trim();
 
   return (
-    <button className={finalClasses} type={type} style={style}>
+    <button className={finalClasses} type={type} style={style} disabled={disabled}>
       {children}
     </button>
   );
