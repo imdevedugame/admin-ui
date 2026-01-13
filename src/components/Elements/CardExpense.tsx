@@ -14,7 +14,7 @@ interface CardExpenseProps {
 }
 
 export default function CardExpense({ category, amount, percentage, trend, items }: CardExpenseProps) {
-  // Map category ke Icon component
+
   const getIconComponent = (category: string) => {
     const iconMap: { [key: string]: any } = {
       housing: Icon.House,
@@ -31,7 +31,7 @@ export default function CardExpense({ category, amount, percentage, trend, items
 
   return (
     <Card title="">
-      {/* Header dengan icon, category, amount, dan percentage */}
+   
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="p-3 rounded-lg bg-gray-100">
@@ -49,7 +49,7 @@ export default function CardExpense({ category, amount, percentage, trend, items
 
       <div className="text-sm text-gray-400 mb-4">Compare to the last month</div>
 
-      {/* Detail items */}
+
       <div className="space-y-4 border-t border-gray-100 pt-4">
         {items.map((detail, index) => (
           <div key={index} className="flex justify-between items-start">

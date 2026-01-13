@@ -35,7 +35,7 @@ const createIcon =
 const createLogo =
   (SVG: React.FC<any>) =>
   ({ size = 40, ...props }: { size?: number; [key: string]: any; }) =>
-    <SVG width={size} height={size} {...props} />; // Menghapus stroke={color}
+    <SVG width={size} height={size} {...props} />; 
 const Icon = {
   Overview: createIcon(OverviewSVG),
   Transaction: createIcon(TransactionSVG),

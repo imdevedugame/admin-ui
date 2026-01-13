@@ -9,7 +9,6 @@ import { useContext } from "react";
 import type { ReactNode } from "react";
 import { AuthContext } from "./context/authContext";
 
-// Component untuk melindungi route yang memerlukan autentikasi
 function RequireAuth({ children }: { children: ReactNode }) {
   const { user } = useContext(AuthContext);
   
@@ -20,7 +19,7 @@ function RequireAuth({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
 
-// Component untuk route yang tidak memerlukan autentikasi
+
 function NotRequireAuth({ children }: { children: ReactNode }) {
   const { user } = useContext(AuthContext);
   

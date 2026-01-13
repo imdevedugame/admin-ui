@@ -22,7 +22,7 @@ export default function FormSignIn({ onSubmit }: FormSignInProps) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/* input */}
+   
         <LabeledInput
           id="email"
           label="Email Address"
@@ -43,21 +43,21 @@ export default function FormSignIn({ onSubmit }: FormSignInProps) {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {/* check box */}
+     
         <CheckBox id="status" name="status" label="Keep me signed in" />
 
-        {/* button login */}
+   
         <Button style={{ backgroundColor: theme.color }}>Login</Button>
       </form>
 
-      {/* divider */}
+
       <div className="my-8 relative flex items-center">
         <div className="grow border-t border-gray-200"></div>
         <div className="px-3 bg-[#f9fafb] text-xs text-gray-400">or sign in with</div>
         <div className="grow border-t border-gray-200"></div>
       </div>
 
-      {/* button google */}
+
       <Button type="button" variant="secondary">
         <span className="flex items-center justify-center">
           <svg
@@ -88,7 +88,7 @@ export default function FormSignIn({ onSubmit }: FormSignInProps) {
         </span>
       </Button>
 
-      {/* link */}
+
       <div className="mt-8 flex justify-center">
         <a href="/register" className="text-sm font-bold animate-bounce" style={{ color: theme.color }}>
           Create an account

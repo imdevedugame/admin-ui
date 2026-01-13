@@ -44,7 +44,7 @@ export default function Dashboard() {
   useEffect(() => {
     fetchGoals();
   }, []);
-  // Data dummy untuk Expenses Breakdown
+ 
   const expenseData = [
     {
       id: 1,
@@ -97,22 +97,21 @@ export default function Dashboard() {
   ];
 return (
     <MainLayout>
-      {/* Gunakan gap yang konsisten dan pastikan span kolom cukup untuk konten */}
+     
       <div className="grid sm:grid-cols-12 gap-6">
         
-        {/* Baris Pertama */}
         <div className="sm:col-span-4">
           <CardBalance data={balances} />
         </div>
         <div className="sm:col-span-4">
           <CardGoal data={goals} />
         </div>
-        {/* Berikan span lebih besar (5) agar Upcoming Bill tidak terhimpit */}
+      
         <div className="sm:col-span-4">
           <CardUpcomingBill data={bills} />
         </div>
 
-        {/* Baris Kedua dan seterusnya */}
+    
         <div className="sm:col-span-4">
           <RecentTransaction data={[...transactions]} />
         </div>

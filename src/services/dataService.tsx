@@ -12,11 +12,11 @@ export const goalService = async () => {
       }, 
     });
     
-    // Cek jika data ada dan tidak kosong
+
     if (response.data.data && response.data.data.length > 0) {
       return response.data.data[0];
     } else {
-      // Return default data jika tidak ada data
+      
       return {
         target_amount: 0,
         present_amount: 0,
@@ -43,7 +43,7 @@ export const expensesService = async () => {
     console.log("Raw expenses response:", response);
     console.log("Response data:", response.data);
     
-    // Cek apakah response.data sudah array atau masih dibungkus object
+ 
     if (Array.isArray(response.data)) {
       return response.data;
     } else if (response.data.data && Array.isArray(response.data.data)) {

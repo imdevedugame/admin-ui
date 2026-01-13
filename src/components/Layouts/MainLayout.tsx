@@ -55,7 +55,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
 
   return (
     <div className={`min-h-screen flex bg-[#f5f7fa] font-sans ${theme.name}`}>
-      {/* SIDEBAR: Sticky agar tetap diam saat scroll */}
+    
       <aside className="bg-[#191919] text-white w-20 sm:w-64 flex flex-col h-screen sticky top-0 py-6 px-4 shrink-0">
         <div className="px-2 mb-8">
           <Logo variant="secondary" />
@@ -115,14 +115,13 @@ export default function MainLayout({ children }: MainLayoutProps) {
         </div>
       </aside>
 
-      {/* RIGHT SIDE */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* HEADER: Dibuat lebih tinggi agar tidak sesak */}
+     
         <header className="bg-white border-b border-gray-100 px-10 py-5 z-10 shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <h2 className="text-xl font-bold text-gray-900">{user?.name || 'Username'}</h2>
-              {/* Tanda >> yang rapat seperti desain asli */}
+            
               <div className="mx-4 flex items-center text-gray-200">
                  <Icon.ChevronRight size={14} strokeWidth={4} />
                  <Icon.ChevronRight size={14} strokeWidth={4} className="-ml-2" />
@@ -142,18 +141,16 @@ export default function MainLayout({ children }: MainLayoutProps) {
           </div>
         </header>
 
-        {/* MAIN CONTENT: Ditambahkan Padding Besar agar terlihat "Zoom Out" */}
+       
        <main className="flex-1 overflow-y-auto px-16 py-10 bg-[#f8f9fb]">
-  {/* PENTING: Turunkan max-width ke 1280px (7xl) agar konten terkumpul di tengah 
-    dan memberikan ruang kosong yang luas di kiri-kanan (tidak mepet sidebar/tepi).
-  */}
+  
   <div className="">
     {children}
   </div>
 </main>
       </div>
 
-      {/* Backdrop untuk loading saat logout */}
+      
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={isLoggingOut}

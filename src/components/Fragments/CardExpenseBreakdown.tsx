@@ -18,7 +18,7 @@ type CardExpenseBreakdownProps = {
 function CardExpenseBreakdown(props: CardExpenseBreakdownProps) {
   const { data } = props;
 
-  // 1. Warna kotak ikon utama berdasarkan kategori
+
   const getCategoryStyle = (category: string) => {
     switch (category.toLowerCase()) {
       case "housing": return "text-orange-500 bg-orange-50";
@@ -58,7 +58,7 @@ function CardExpenseBreakdown(props: CardExpenseBreakdownProps) {
                       ${item.amount.toLocaleString()}.00
                     </div>
                     
-                    {/* Persentase dan Ikon Panah (Warna Merah/Hijau) */}
+                    
                     <div className="flex items-center gap-1 text-[13px] mt-1 font-medium">
                       <span className="text-gray-400">{item.percentage}%*</span>
                       <span className={`scale-110 ${item.percentage > 15 ? 'text-red-500' : 'text-green-500'}`}>
@@ -67,7 +67,7 @@ function CardExpenseBreakdown(props: CardExpenseBreakdownProps) {
                     </div>
                   </div>
 
-                  {/* Ikon Panah ke Samping (Ganti dari Chevron ke ArrowRight) */}
+                
                   <div className="text-gray-300 group-hover:text-gray-400 transition-colors ml-2">
                      <Icon.ArrowRight size={32} strokeWidth={2.5} />
                   </div>
