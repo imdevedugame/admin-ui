@@ -1,4 +1,3 @@
-import Card from "./Card";
 import Icon from "./Icon";
 
 interface CardExpenseProps {
@@ -20,7 +19,7 @@ export default function CardExpense({ category, amount, percentage, trend, items
       housing: Icon.House,
       food: Icon.Food,
       transportation: Icon.Transport,
-      entertainment: Icon.Gamepad,
+      entertainment: Icon.Movie,
       shopping: Icon.Shopping,
       others: Icon.Other,
     };
@@ -30,11 +29,10 @@ export default function CardExpense({ category, amount, percentage, trend, items
   const IconComponent = getIconComponent(category);
 
   return (
-    <Card title="">
-   
-      <div className="mb-4 flex items-center justify-between">
+    <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div className="flex items-center justify-between bg-gray-100 p-6">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-lg bg-gray-100">
+          <div className="p-3 rounded-lg bg-gray-200">
             <IconComponent size={32} className="text-gray-700" />
           </div>
           <div>
@@ -47,20 +45,21 @@ export default function CardExpense({ category, amount, percentage, trend, items
         </div>
       </div>
 
-      <div className="text-sm text-gray-400 mb-4">Compare to the last month</div>
+      <div className="px-6 pt-4">
+        <div className="text-sm text-gray-400 mb-4">Compare to the last month</div>
 
-
-      <div className="space-y-4 border-t border-gray-100 pt-4">
-        {items.map((detail, index) => (
-          <div key={index} className="flex justify-between items-start">
-            <div className="text-gray-600 text-base">{detail.item}</div>
-            <div className="text-right">
-              <div className="font-semibold text-gray-900 text-lg">${detail.amount}</div>
-              <div className="text-sm text-gray-400">{detail.date}</div>
+        <div className="space-y-4 pb-2">
+          {items.map((detail, index) => (
+            <div key={index} className="flex justify-between border-t border-gray-100 pt-4 items-start">
+              <div className="text-gray-600 text-base">{detail.item}</div>
+              <div className="text-right">
+                <div className="font-semibold text-gray-900 text-lg">${detail.amount}</div>
+                <div className="text-sm text-gray-400">{detail.date}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </Card>
+    </div>
   );
 }

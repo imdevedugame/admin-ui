@@ -98,29 +98,28 @@ export default function Dashboard() {
 return (
     <MainLayout>
      
-      <div className="grid sm:grid-cols-12 gap-6">
-        
-        <div className="sm:col-span-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Row 1: Balance, Goals, Upcoming Bills */}
+        <div className="w-full">
           <CardBalance data={balances} />
         </div>
-        <div className="sm:col-span-4">
+        <div className="w-full">
           <CardGoal data={goals} />
         </div>
-      
-        <div className="sm:col-span-4">
+        <div className="w-full">
           <CardUpcomingBill data={bills} />
         </div>
 
-    
-        <div className="sm:col-span-4">
+        {/* Row 2: Recent Transaction & Statistics/Expense */}
+        <div className="w-full lg:col-span-1">
           <RecentTransaction data={[...transactions]} />
         </div>
-        <div className="sm:col-span-8 flex flex-col gap-6">
+        <div className="w-full md:col-span-1 lg:col-span-2 flex flex-col gap-6">
           <CardStatistic data={expensesStatistics} />
           <CardExpenseBreakdown data={expenseData} />
         </div>
-        
       </div>
+
       <AppSnackbar
         open={snackbar.open}
         message={snackbar.message}
